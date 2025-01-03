@@ -20,60 +20,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 class VigenereCipheringMachine {
-  constructor(direct = true) {
-    this.direct = direct;
+  encrypt() {
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
   }
-  encrypt(message, key) {
-    if (!message || !key) {
-      throw new Error('Incorrect arguments!');
-    }
-    message = message.toUpperCase();
-    key = key.toUpperCase();
-    let encryptedMessage = '';
-    let keyIndex = 0;
-    for (let i = 0; i < message.length; i++) {
-      let char = message[i];
-      if (char >= 'A' && char <= 'Z') {
-        let charShift = char.charCodeAt(0) - 65; // 'A' is 65
-        let keyShift = key[keyIndex % key.length].charCodeAt(0) - 65;
-        let encryptedChar = String.fromCharCode(((charShift + keyShift) % 26) + 65);
-        encryptedMessage += encryptedChar;
-        keyIndex++;
-      } else {
-        encryptedMessage += char;
-      }
-    }
-    return this.direct ? encryptedMessage : encryptedMessage.split('').reverse().join('');
-  }
-
-  decrypt(message, key) {
-    if (!message || !key) {
-      throw new Error('Incorrect arguments!');
-    }
-
-    message = message.toUpperCase();
-    key = key.toUpperCase();
-
-    let decryptedMessage = '';
-    let keyIndex = 0;
-
-    for (let i = 0; i < message.length; i++) {
-      let char = message[i];
-
-      if (char >= 'A' && char <= 'Z') {
-        let charShift = char.charCodeAt(0) - 65; // 'A' is 65
-        let keyShift = key[keyIndex % key.length].charCodeAt(0) - 65;
-
-        let decryptedChar = String.fromCharCode(((charShift - keyShift + 26) % 26) + 65);
-        decryptedMessage += decryptedChar;
-
-        keyIndex++;
-      } else {
-        decryptedMessage += char;
-      }
-    }
-
-    return this.direct ? decryptedMessage : decryptedMessage.split('').reverse().join('');
+  decrypt() {
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
   }
 }
 
